@@ -6,7 +6,7 @@ const CustomerDetails = ({ customer }) => {
 
   const fetchImage = () => {
 
-    if (image.length == 0) {
+    if (image.length === 0) {
       setTimeout(async () => {
         try {
           const res = await fetch("https://fakestoreapi.com/products?limit=9");

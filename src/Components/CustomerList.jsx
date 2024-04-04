@@ -1,12 +1,21 @@
 import React from 'react';
 import '../css/CustomerList.css';
+import InfiniteScroll from 'react-infinite-scroll-component'
 
-const CustomerList = ({ customers, onCustomerSelect, selectedCustomerId }) => {
+const CustomerList = ({ customers, onCustomerSelect, selectedCustomerId,fetchCustomers ,hasMore}) => {
   return (
     <div className="customer-list">
+      <InfiniteScroll
+                dataLength={customers.length}
+                next={fetchCustomers}
+                hasMore={hasMore}
+                loader={<h4>Loading...</h4>}
+     
+      >
       {customers.map(customer => (
         <div
           key={customer.id}
+          
           className={`customer-card ${selectedCustomerId === customer.id ? 'selected' : ''}`}
           onClick={() => onCustomerSelect(customer.id)}
         >
@@ -16,6 +25,9 @@ const CustomerList = ({ customers, onCustomerSelect, selectedCustomerId }) => {
           </div>
         </div>
       ))}
+
+      </InfiniteScroll>
+
     </div>
   );
 };

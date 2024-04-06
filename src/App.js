@@ -3,18 +3,13 @@ import './App.css';
 import CustomerList from './Components/CustomerList';
 import CustomerDetails from './Components/CustomerDetails';
 
-
 const App = () => {
-  
-  
   const [selectedCustomerId, setSelectedCustomerId] = useState(null);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-
-
-  const fetchData = async () => {
+  const fetchData = async (page) => {
     try {
       const response = await fetch(`https://cubebeckendcustomer.onrender.com/datas?_page=${page}`);
       if (!response.ok) {
@@ -31,11 +26,11 @@ const App = () => {
       console.error('Error fetching data:', error);
     }
   };
-  
+
   useEffect(() => {
-    fetchData();
+    fetchData(page);
   }, [page]);
- 
+
   const handleCustomerSelect = (dataId) => {
     setSelectedCustomerId(dataId);
   };
@@ -47,7 +42,7 @@ const App = () => {
         customers={data}
         onCustomerSelect={handleCustomerSelect}
         selectedCustomerId={selectedCustomerId}
-        
+
         hasMore={hasMore}
       />
       <CustomerDetails customer={data.find(customer => customer.id === selectedCustomerId)} />

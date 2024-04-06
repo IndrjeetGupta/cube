@@ -4,7 +4,7 @@ import '../css/CustomerDetails.css'
 const CustomerDetails = ({ customer }) => {
   const [image, setImage] = useState([])
 
-  const fetchImage = () => {
+  const fetchImage = (image) => {
 
     if (image.length === 0) {
       setTimeout(async () => {
@@ -39,7 +39,7 @@ const CustomerDetails = ({ customer }) => {
   }
 
   useEffect(() => {
-    fetchImage()
+    fetchImage(image)
 
   }, [image])
 
@@ -62,7 +62,9 @@ const CustomerDetails = ({ customer }) => {
       <div className="photo-grid">
 
         {image.map((photo) => (
-          <img src={`https://source.unsplash.com/random/300x200?sig=${Math.random()}`} alt='loading' className="photo" />
+          <img
+          key={photo.id}
+           src={`https://source.unsplash.com/random/300x200?sig=${Math.random()}`} alt='loading' className="photo" />
         ))}
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/CustomerList.css';
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { v4 as uuidv4 } from 'uuid'
 
 const CustomerList = ({ customers, onCustomerSelect, selectedCustomerId,fetchCustomers ,hasMore}) => {
   return (
@@ -14,7 +15,7 @@ const CustomerList = ({ customers, onCustomerSelect, selectedCustomerId,fetchCus
       >
       {customers.map(customer => (
         <div
-          key={customer.id}
+        key={uuidv4()}
           
           className={`customer-card ${selectedCustomerId === customer.id ? 'selected' : ''}`}
           onClick={() => onCustomerSelect(customer.id)}

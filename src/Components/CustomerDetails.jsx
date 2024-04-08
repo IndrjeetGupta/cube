@@ -4,44 +4,46 @@ import '../css/CustomerDetails.css'
 const CustomerDetails = ({ customer }) => {
   const [image, setImage] = useState([])
 
-  const fetchImage = (image) => {
-
-    if (image.length === 0) {
-      setTimeout(async () => {
-        try {
-          const res = await fetch("https://fakestoreapi.com/products?limit=9");
-          const data = await res.json();
-          setImage(data)
-
-        }
-        catch (err) {
-          console.log(err)
-
-        }
-      })
-    }
-    else {
-      setTimeout(async () => {
-        try {
-          const res = await fetch("https://fakestoreapi.com/products?limit=9");
-          const data = await res.json();
-          setImage(data)
-
-        }
-        catch (err) {
-          console.log(err)
-
-        }
-
-      }, 10000)
-
-    }
-  }
 
   useEffect(() => {
-    fetchImage(image)
+    let intervalId;
 
-  }, [image])
+    if (image.length === 0) {
+      intervalId = setTimeout(async () => {
+        try {
+          const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=10")
+          const data = await res.json()
+
+          setImage(data.splice(0, 9));
+        }
+        catch (err) {
+          console.log(err)
+        }
+
+        console.log("shba")
+      },);
+
+    }
+    else {
+      intervalId = setInterval(async () => {
+        try {
+          const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=10")
+          const data = await res.json()
+          setImage(data.splice(0, 9));
+        }
+        catch (err) {
+          console.log(err)
+        }
+
+        console.log("shba")
+      }, 10000);
+
+    }
+
+
+    return () => clearInterval(intervalId);
+  }, [image]);
+
 
 
 
@@ -62,9 +64,8 @@ const CustomerDetails = ({ customer }) => {
       <div className="photo-grid">
 
         {image.map((photo) => (
-          <img
-          key={photo.id}
-           src={`https://source.unsplash.com/random/300x200?sig=${Math.random()}`} alt='loading' className="photo" />
+          <img key={photo.id}
+            src={photo.url} alt='loading' className="photo" />
         ))}
       </div>
     </div>

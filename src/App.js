@@ -8,6 +8,12 @@ const App = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [hambur , setHamburger] = useState(false)
+
+  const handelHambur = () =>{
+    setHamburger(!hambur)
+  }
+  // console.log(hambur)
 
   const fetchData = async (page) => {
     try {
@@ -38,14 +44,18 @@ const App = () => {
   return (
     <div className="app">
       <CustomerList
-
         customers={data}
         onCustomerSelect={handleCustomerSelect}
         selectedCustomerId={selectedCustomerId}
+        handelHambur={handelHambur}
+        hambur={hambur}
 
         hasMore={hasMore}
       />
-      <CustomerDetails customer={data.find(customer => customer.id === selectedCustomerId)} />
+      <CustomerDetails customer={data.find(customer => customer.id === selectedCustomerId)}
+              handelHambur={handelHambur}
+              hambur={hambur}
+      />
     </div>
   );
 };

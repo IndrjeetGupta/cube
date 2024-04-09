@@ -1,9 +1,9 @@
+body{
+  background-color: #4e4d4d0c;
+}
 .customer-details {
-    background-color: #f0f0f06b;
-    border: 1px solid #ccc;
-    padding: 20px;
     text-align: center;
-  
+    
   
   }
   
@@ -12,6 +12,16 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: x-large;
     
+  }
+  .heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hambur{
+    margin-left: 20px;
+    padding-bottom: 10px;
+    display: none;
   }
   
   .detail-title {
@@ -27,9 +37,9 @@
     width: 70%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
     margin: auto;
-    
+    justify-content: center;
+     
   }
   
   .photo {
@@ -39,18 +49,71 @@
     text-align: center;
     margin: auto;
     padding: 5px;
+  
+  }
+  .main_icon{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+  }
+  .icon{
+    display: none;
   }
 
   @media screen and (max-width : 768px) {
     .photo-grid {
       padding-top: 50px;
       text-align: center;
-      width: 100%;
+      width: 80%;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       margin: auto;
+      margin-bottom: 20px;
       
+    }
+    .hambur{
+      display: block;
+      padding-bottom: 10px;
+     
+    }
+
+
+    .icon{
+      display: block;
+      padding-left: 20px;
+      padding-top: 5px;
+    }
+    
+  }
+  .hamburger{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width : 426px) {
+    .photo-grid {
+      padding-top: 50px;
+      text-align: center;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+      margin: auto;
+      margin-bottom: 20px;
+      
+    }
+    .hambur{
+      display: block;
+      padding-bottom: 10px;
+    }
+
+
+    .icon{
+      display: block;
+      padding-left: 20px;
+      padding-top: 5px;
     }
   
     

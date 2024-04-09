@@ -1,8 +1,9 @@
-.customer-list {
+#customer-list {
     display: flex;
     flex-direction: column;
     width: 300px;
     overflow-y: auto;
+    
 
   }
   
@@ -12,6 +13,7 @@
     transition: background-color 0.3s ease;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     padding-left: 20px;
+    background-color: white;
   }
   
   .customer-card.selected {
@@ -51,31 +53,46 @@
   span{
     font-weight: bold;
   }
+  
             
   /* Scrollbar */
-.customer-list::-webkit-scrollbar {
+#customer-list::-webkit-scrollbar {
     width: 3px; /* Set the width of the scrollbar */
   }
   
   /* Track */
-  .customer-list::-webkit-scrollbar-track {
+  #customer-list::-webkit-scrollbar-track {
     background: #f1f1f1; /* Color of the track */
   }
   
   /* Handle */
-  .customer-list::-webkit-scrollbar-thumb {
+  #customer-list::-webkit-scrollbar-thumb {
     background: #888; /* Color of the scrollbar handle */
   }
   
   /* Handle on hover */
-  .customer-list::-webkit-scrollbar-thumb:hover {
+  #customer-list::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color of the scrollbar handle on hover */
   }
   
 
+  .responsive{
+    display: block !important;
+    z-index: 12;
+    position: absolute;
+    left: 0;
+    
+  
+  }
+
+  /* #customer-list .responsive{
+    background-color: red;
+
+  } */
 @media screen and (max-width : 768px) {
-  .customer-list{
+  #customer-list{
     display: none;
+    width: 200px;
   }
 
   
